@@ -7,7 +7,7 @@ import { PromptService } from '../../core/prompt/prompt.service';
 import { DirBuilder } from './dir.builder';
 import { DirInput } from './dir.types';
 
-export class DirExecuter extends CommandExecutor<DirInput> {
+export class DirExecutor extends CommandExecutor<DirInput> {
     private promptService: PromptService = new PromptService()
     constructor(
         logger: IStreamLogger,

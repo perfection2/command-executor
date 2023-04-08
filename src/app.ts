@@ -1,10 +1,11 @@
 import { FfmpegExecutor } from './commands/ffmpeg/ffmpeg.executor';
 import { ConsoleLogger } from './out/console-logger/console-logger';
-import { DirExecuter } from './commands/dir/dir.executor';
+import { DirExecutor } from './commands/dir/dir.executor';
 
 export class App {
     async run() {
-        await new DirExecuter(ConsoleLogger.getInstance()).execute();
+        // await new FfmpegExecutor(ConsoleLogger.getInstance()).execute();
+        await new DirExecutor(ConsoleLogger.getInstance()).execute();
     }
 }
 
