@@ -16,7 +16,7 @@ export class DirExecutor extends CommandExecutor<DirInput> {
     }
 
     protected async prompt(): Promise<DirInput> {
-        let path = await this.promptService.input<string>('Путь', 'input');
+        const path = await this.promptService.input<string>('Путь', 'input');
         return { path };
     }
     protected build({ path }: DirInput): ICommandExec {
@@ -25,8 +25,8 @@ export class DirExecutor extends CommandExecutor<DirInput> {
             .output();
         return { command: 'ls', args: args.concat(path) };
     }
-    protected spawn({ command: commmand, args }: ICommandExec): ChildProcessWithoutNullStreams {
-        return spawn(commmand, args);
+    protected spawn({ command, args }: ICommandExec): ChildProcessWithoutNullStreams {
+        return spawn(command, args);
     }
     protected processStream(stream: ChildProcessWithoutNullStreams, output: IStreamLogger): void {
         const handler = new StreamHandler(output);

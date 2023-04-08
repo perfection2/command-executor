@@ -27,7 +27,7 @@ export class FfmpegExecutor extends CommandExecutor<IFfmpegInput> {
 
     protected build({ width, height, path, name }: IFfmpegInput): ICommandExecFfmpeg {
         const output = this.fileService.getFilePath(path, name, 'mp4');
-        const args = (new FfmpegBuilder)
+        const args = (new FfmpegBuilder())
             .input(path)
             .setVideoSize(width, height)
             .output(output)
