@@ -1,6 +1,6 @@
-
 import { ChildProcessWithoutNullStreams } from 'child_process';
 import { IStreamLogger } from '../handlers/stream-logger.interface';
+import { ICommandExec } from './command.types';
 
 
 export abstract class CommandExecutor<Input> {
@@ -14,8 +14,8 @@ export abstract class CommandExecutor<Input> {
     }
 
     protected abstract prompt(): Promise<Input>
-    protected abstract build(input: Input): any;
-    protected abstract spawn(command: any): ChildProcessWithoutNullStreams;
+    protected abstract build(input: Input): ICommandExec;
+    protected abstract spawn(command: ICommandExec): ChildProcessWithoutNullStreams;
     protected abstract processStream(stream: ChildProcessWithoutNullStreams, logger: IStreamLogger): void;
 }
 

@@ -1,10 +1,9 @@
 export class FfmpegBuilder {
     private inputPath: string;
-    private outputPath: string;
     private options: Map<string, string> = new Map();
 
     constructor() {
-        this.options.set('-c:v', 'libx264');
+        this.options.set('-c:v', 'libx264'); // дефолтная опция
     }
 
     input(inputPath: string): this {
@@ -21,12 +20,16 @@ export class FfmpegBuilder {
         if (!this.inputPath) {
             throw new Error('Не задан параметр input');
         }
+        // 1. input
         const args: string[] = ['-i', this.inputPath];
+        // 2. options
         this.options.forEach((value, key) => {
             args.push(key);
             args.push(value);
         });
+        // 3. output
         args.push(outputPath);
+        // возвращаем общий массив строк
         return args;
     }
 }
